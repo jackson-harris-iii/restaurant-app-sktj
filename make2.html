@@ -117,7 +117,20 @@
 
     <script>
 
+    $("#submit-btn").on("click", function(event) {
+      event.preventDefault();
+      var newReservation = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+        nameId: $("#nameId").val().trim()
+      };
 
+      $.post("/reserve", newReservation)
+        .then(function(data) {
+          console.log(data);
+          alert("You added a reservation!");
+        });
 
 
 

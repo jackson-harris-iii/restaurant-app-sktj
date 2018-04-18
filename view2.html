@@ -99,21 +99,29 @@
   // just displaying databases in divs, #displayCurrent and #displayWaitList
   
 
-      $.get("/api/" + searchedCharacter, function(data) {
-        console.log(data);
+  // just displaying databases in divs, #displayCurrent and #displayWaitList
+    // after 5 reservations, people go on the waitlist
+    var count = 0;
 
-        
-        if (data && ) {
-          $("#displayCurrent").show();
-          $("#nameId").text(data.nameId);
-          
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-      });
-    });
+      $.get("/tables", function(data) {
+        for (var i = 0, i < data.length; i++) {
+
+          count++;
+
+            if (data && count < 5) {
+              $("#displayCurrent").show();
+              // position variable? 
+              $("#nameId").text(data.nameId);
+              }
+
+            else {
+              $("#displayWaitList").show();
+              // position variable?
+              $("#nameId").text(data.nameId);
+            }
+      };
+    };
+
 
 
   </script>

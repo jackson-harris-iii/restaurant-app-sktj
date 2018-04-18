@@ -11,15 +11,15 @@ app.use(bp.urlencoded({ extended: true}));
 app.use(bp.json());
 
 app.get('/', function (req, res) {
-    res.sendFile(path.join(__dirname, "home.html"))
+    res.sendFile(path.join(__dirname, "home2.html"))
 })
 
 app.get('/makereservation', function (req, res) {
-    res.sendFile(path.join(__dirname, "make.html"))
+    res.sendFile(path.join(__dirname, "make2.html"))
 })
 
 app.get('/viewtables', function (req, res) {
-    res.sendFile(path.join(__dirname, "index.html"))
+    res.sendFile(path.join(__dirname, "view2.html"))
 })
 
 app.listen(PORT, function () {
