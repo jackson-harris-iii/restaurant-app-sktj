@@ -154,32 +154,37 @@
 
 $(document).ready(function(){
 
+function loadReservations() {
+  $.get('/reservations', function (data) {
+    console.log(data);
+  })
+}
+
+// $("#addRows").on("click", function(){
+
+//   event.preventDefault();
+
+//   $("#name").empty();
+//   $("#phone").empty();
+//   $("#email").empty();
+//   $("#nameID").empty();
+
+//   name = $("#name").val().trim();
+//   phone = $("#phone").val().trim();
+//   email = $("#email").val().trim();
+//   id = $("#nameID").val().trim();
 
 
-$("#addRows").on("click", function(){
+//   event.preventDefault();
 
-  event.preventDefault();
+//     // Push to page
+//   var newLine = $("<tr></tr>"); 
 
-  $("#name").empty();
-  $("#phone").empty();
-  $("#email").empty();
-  $("#nameID").empty();
-
-  name = $("#name").val().trim();
-  phone = $("#phone").val().trim();
-  email = $("#email").val().trim();
-  id = $("#nameID").val().trim();
+//   newLine.append('<td>' + name + '</td>');
 
 
-  event.preventDefault();
-
-    // Push to page
-  var newLine = $("<tr></tr>"); 
-
-  newLine.append('<td>' + name + '</td>');
-
-
-  $("#resName").append(newLine);
+//   $("#resName").append(newLine);
+  loadReservations();
 })
 
 });
