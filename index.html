@@ -71,10 +71,10 @@
           <th>Name of Reservation</th>
         </tr>
       </thead>
-      <tbody id="tbody">
+      <tbody id="wtbody">
         <tr>
-          <td id='position'></td>
-          <td id='resName'></td>
+          <td id='waitPos'></td>
+          <td id='waitName'></td>
         </tr>
       </tbody>
     </table>
@@ -86,7 +86,7 @@
 
 
         <!-- Sign-Up Panel-->
-
+<!-- 
         <div class="col-lg-12">
 
           <div class="panel panel-default">
@@ -99,7 +99,7 @@
 
             <div class="panel-body">
 
-              <!-- Sign-up Form -->
+              Sign-up Form
 
             <form role="form">
 
@@ -148,7 +148,7 @@
 
           </div>
 
-        </div>
+        </div> -->
 
         <h5><a href="/makereservation">API Table Link</a><span>  |  </span><a href="/viewtables">API Wait List</a></h5>
 
@@ -159,43 +159,46 @@
     <script src="https://code.jquery.com/jquery.js"></script>
 
 
-<script>
+<script type="text/javascript">
 
-$(document).ready(function(){
+$.get('/reservations', function (data) {
 
+  let names = data
+  let count = 0
+  let waitCount = 0
+  
 
+    data.forEach(element => {
+      
+      if (count < 4){
+      let pos = count + 1
+      let resname = $("<tr></tr>");
+      let resposition = $("<tr></tr>");
 
-$("#addRows").on("click", function(){
+      resname.append('<td>' + element.name + '</td>');
+      resposition.append('<td>' + pos + '</td>');
 
-  event.preventDefault();
+      $("#resName").append(resname);
+      $("#position").append(resposition);
+      count++
+      console.log(count)
+    }
+      else {
+          let wpos = waitCount + 1
+          let wresname = $("<tr></tr>");
+          let wresposition = $("<tr></tr>");
 
-  $("#name").empty();
-  $("#phone").empty();
-  $("#email").empty();
-  $("#nameID").empty();
+          wresname.append('<td>' + element.name + '</td>');
+          wresposition.append('<td>' + wpos + '</td>');
 
-  name = $("#name").val().trim();
-  phone = $("#phone").val().trim();
-  email = $("#email").val().trim();
-  id = $("#nameID").val().trim();
+          $("#waitName").append(wresname);
+          $("#waitPos").append(wresposition);
+          waitCount++
+          console.log('hello')
+      }
+    }); 
 
-
-  event.preventDefault();
-
-    // Push to page
-  var newLine = $("<tr></tr>"); 
-
-  newLine.append('<td>' + name + '</td>');
-
-
-  $("#resName").append(newLine);
-})
-
-});
-
-
-
-
+  });  
     </script>
 
   </body>

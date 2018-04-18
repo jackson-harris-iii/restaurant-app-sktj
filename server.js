@@ -6,10 +6,13 @@ const path = require('path');
 const app = express();
 var PORT = process.env.PORT || 3000;
 
+
 // Sets up the Express app to handle data parsing
 app.use(bp.urlencoded({ extended: true}));
 app.use(bp.json());
 
+
+//basic routes
 app.get('/', function (req, res) {
     res.sendFile(path.join(__dirname, "home2.html"))
 })
@@ -26,6 +29,8 @@ app.listen(PORT, function () {
   console.log("I'm Listening...")  
 })
 
+
+//table object data
 var tables = [
     {
        name:'Rick',
@@ -45,6 +50,30 @@ var tables = [
         email: 'morty@planetc128.net',
         nameId: 'awwgeez'
     },
+    {
+        name: 'Morty',
+        phone: 5556762359,
+        email: 'morty@planetc128.net',
+        nameId: 'awwgeez'
+    },
+    {
+        name: 'Morty',
+        phone: 5556762359,
+        email: 'morty@planetc128.net',
+        nameId: 'awwgeez'
+    },
+    {
+        name: 'Morty',
+        phone: 5556762359,
+        email: 'morty@planetc128.net',
+        nameId: 'awwgeez'
+    },
+    {
+        name: 'Morty',
+        phone: 5556762359,
+        email: 'morty@planetc128.net',
+        nameId: 'awwgeez'
+    },
 ];
 
 app.post('/reserve', function (req, res) {
@@ -56,11 +85,14 @@ app.post('/reserve', function (req, res) {
     newReservation.routeName = newReservation.name.replace(/\s+/g, "").toLowerCase();
 
     console.log(newReservation);
+
+    tables.push(newReservation)
+
     res.json(newReservation)
 })
 
 app.get('/reservations', function (req, res) {
     
     console.log(tables)
-    return tables
+    return res.json(tables)
 })
