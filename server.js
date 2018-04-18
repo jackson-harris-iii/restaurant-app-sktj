@@ -18,7 +18,7 @@ app.get('/makereservation', function (req, res) {
     res.sendFile(path.join(__dirname, "make.html"))
 })
 
-app.get('/makereservation', function (req, res) {
+app.get('/viewtables', function (req, res) {
     res.sendFile(path.join(__dirname, "index.html"))
 })
 
@@ -57,4 +57,10 @@ app.post('/reserve', function (req, res) {
 
     console.log(newReservation);
     res.json(newReservation)
+})
+
+app.get('/reservations', function (req, res) {
+    
+    console.log(tables)
+    return tables
 })

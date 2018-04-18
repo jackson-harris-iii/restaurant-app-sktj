@@ -3,6 +3,8 @@ body {
 }
 
 
+
+}
 .jumbotron {
   margin-bottom: 0px;
   max-width: 750px;
@@ -12,6 +14,9 @@ body {
 
 }
 
+.center {
+  text-align: center;
+}
 
 #container{
   width: 100%;
