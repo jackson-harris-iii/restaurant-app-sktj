@@ -18,23 +18,26 @@
   <script type="text/javascript">
 
   // just displaying databases in divs, #displayCurrent and #displayWaitList
-  
+    var count = 0;
+    var reservation;
+    // after 5 reservations, people go on the waitlist
 
-      $.get("/api/" + searchedCharacter, function(data) {
+      $.get("/tables", function(data) {
         console.log(data);
 
-        
-        if (data && ) {
+        count++;
+
+        if (data && count < 5) {
           $("#displayCurrent").show();
           $("#nameId").text(data.nameId);
           
         }
         else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
+          $("#displayWaitList").show();
+          $("#nameId").text(data.nameId);
         }
       });
-    });
+    };
 
 
   </script>

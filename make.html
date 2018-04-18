@@ -26,7 +26,7 @@
         nameId: $("#nameId").val().trim()
       };
 
-      $.post("/api/new", newReservation)
+      $.post("/reserve", newReservation)
         .then(function(data) {
           console.log(data);
           alert("You added a reservation!");
