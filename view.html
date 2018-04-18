@@ -18,25 +18,26 @@
   <script type="text/javascript">
 
   // just displaying databases in divs, #displayCurrent and #displayWaitList
-    var count = 0;
-    var reservation;
     // after 5 reservations, people go on the waitlist
+    var count = 0;
 
       $.get("/tables", function(data) {
-        console.log(data);
+        for (var i = 0, i < data.length; i++) {
 
-        count++;
+          count++;
 
-        if (data && count < 5) {
-          $("#displayCurrent").show();
-          $("#nameId").text(data.nameId);
-          
-        }
-        else {
-          $("#displayWaitList").show();
-          $("#nameId").text(data.nameId);
-        }
-      });
+            if (data && count < 5) {
+              $("#displayCurrent").show();
+              // position variable? 
+              $("#nameId").text(data.nameId);
+              }
+
+            else {
+              $("#displayWaitList").show();
+              // position variable?
+              $("#nameId").text(data.nameId);
+            }
+      };
     };
 
 
